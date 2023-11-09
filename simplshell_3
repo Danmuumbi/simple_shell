@@ -1,0 +1,38 @@
+#include "shell.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
+/**
+ * execute_command - Execute an external command.
+ * @info: Structure containing potential arguments.
+ * @command: The command to execute.
+ *
+ * Return: 0 on success, -1 on failure.
+ */
+int execute_command(info_t *info, const char *command)
+{
+    char *path_env = custom_getenv(info, "PATH");
+    char *token, *path;
+    char *full_path = NULL;
+    pid_t child_pid;
+    int status;
+
+    if (path_env == NULL || command == NULL)
+        return -1;
+
+    token = strtok(path_env, ":");
+    while (token != NULL)
+    {
+        path = custom_strcat(token, "/");
+        full_path = custom_strcat(path, command);
+        if (access(full_path, X_OK) == 0)
+        {
+            free(path);
+            child_pid = fork();
+            if (child_pid == -1)
+            {
+                perror("fork");
+                return -1;
+            }
