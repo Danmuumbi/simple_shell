@@ -13,7 +13,7 @@ void clear_info(info_t *info)
 }
 
 /**
- * set_info - Initializes the fields of the info_t struct based on the argument vector.
+ * set_info - Initializes fields of info_t struct based onargument vector.
  * @info: Address of the struct to be initialized.
  * @av: Argument vector.
  */

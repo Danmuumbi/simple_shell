@@ -19,7 +19,7 @@ size_t list_len(const list_t *h)
 }
 
 /**
- * list_to_strings - Converts a linked list to an array of strings using list->str.
+ * list_to_strings - Converts linked list to array of strings using list->str.
  * @head: Pointer to the first node.
  *
  * Return: Array of strings.
@@ -78,10 +78,10 @@ size_t print_list(const list_t *h)
 }
 
 /**
- * node_starts_with - Returns the node whose string starts with the given prefix.
+ * node_starts_with - Returns the node string starts with the given prefix.
  * @node: Pointer to the list head.
  * @prefix: String to match.
- * @c: The next character after the prefix to match.
+ * @c: The next character after the prefix match.
  *
  * Return: Matching node or NULL.
  */
